@@ -14,11 +14,13 @@
     </thead>
     <tbody>
         {% for course in courses %}
-        <tr>
-            <th>{{course.title}}</th>
-            <th>{{course.cetegory}}</th>
-            <th>{{course.price}}</th>
-            <th>{{course.students_qty}}</th>
+        <tr>            
+            <td>
+                <a href={% url "shop:single_course" course.id %}>{{course.title}}</a>
+            </td>
+            <td>{{course.cetegory}}</td>
+            <td>{{course.price}}</td>
+            <td>{{course.students_qty}}</td>
             <td><button class="btn btn-primary">Buy</button></td>
         </tr>
         {% endfor %}
