@@ -16,6 +16,7 @@ class CourceResource(ModelResource):
         queryset = Course.objects.all()
         resource_name = 'courses'
         allowed_methods = ['get', 'post', 'delete']
+        excludes = ['reviews_qty', 'created_at']
         authentication = CustomAuthentication()
         authorization = Authorization()
 
@@ -24,7 +25,8 @@ class CourceResource(ModelResource):
         return bundle
 
     def dehydrate(self, bundle):
-        bundle.data['cetegory_id'] = bundle.obj.cetegory
+        bundle.data['cetegory_id'] = bundle.obj.cetegory_id
+        bundle.data['cetegory'] = bundle.obj.cetegory
         return bundle
 
     def dehydrate_title(self, bundle):
